@@ -18,8 +18,8 @@
                 <main class="main-section">
                     <section class="main-top">
                         <h2 class="main-title">OFERTAS</h2>
-                        <div class="offers-products">
-                            <% for (let el of prod) { %>
+                        <!-- <div class="offers-products"> -->
+                        <!-- <% for (let el of prod) { %>
                                 <% if (el.offer) { %>
                                     <div class="product">
                                         <div class="product-image">
@@ -37,51 +37,105 @@
                                                 <%= el.description%>
                                             </p>
                                             <p class="product-price">
-                                                $<%= el.price %>
+                                                $
+                                                <%= el.price %>
                                             </p>
                                         </div>
                                     </div>
-                                    <% } } %>
-                        </div>
-                            <div class="see-more">
-                                <a href="#">VER TODO</a>
-                            </div>
-                    </section>
-                    <section class="main-bottom">
-                        <h2 class="main-title">ENVIO GRATIS</h2>
-                        <div class="popular-products">
+                                    <% } } %> -->
+
+
+
+                        <section class="customer-logos slider">
                             <% for (let el of prod) { %>
-                                <% if (el.shipping) { %>
-                                    <div class="product">
-                                        <div class="product-image">
-                                            <a href="/products/detail/<%= el.id %>"><img
-                                                    src="/images/products-image/<%= el.image %>" alt="product"></a>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="product-name">
-                                                <p>
-                                                    <%= el.name%>
-                                                </p>
-                                                <img src="/images/flags/<%= el.country%>" alt="flag">
-                                            </div>
-                                            <p>
-                                                <%= el.description%>
-                                            </p>
-                                            <p class="product-price">
-                                                $<%= el.price%>
-                                            </p>
-                                        </div>
+                                <% if (el.offer) { %>
+                                    <div class="slide">
+
+                                        <a href="/products/detail/<%= el.id %>"><img src="/images/products-image/<%= el.image %>" alt="product"></a>
+                                        <p>
+                                            <%= el.name %>
+                                        </p>
+                                        <!-- <img src="/images/flags/<%= el.country %>" alt="flag"> -->
+                                        <p>
+                                            <%= el.description%>
+                                        </p>
+                                        <p class="product-price">
+                                            $
+                                            <%= el.price %>
+                                        </p>
                                     </div>
+
                                     <% } } %>
-                        </div>
+                        </section>
+
+                        <!-- </div> -->
+                        <!-- <div class="see-more">
+                        <a href="#">VER TODO</a>
+                    </div>
+                    </section>-->
+                        <section class="main-bottom">
+                            <h2 class="main-title">ENVIO GRATIS</h2>
+                            <div class="popular-products">
+                                <% for (let el of prod) { %>
+                                    <% if (el.shipping) { %>
+                                        <div class="product">
+                                            <div class="product-image">
+                                                <a href="/products/detail/<%= el.id %>"><img
+                                                    src="/images/products-image/<%= el.image %>" alt="product"></a>
+                                            </div>
+                                            <div class="product-detail">
+                                                <div class="product-name">
+                                                    <p>
+                                                        <%= el.name%>
+                                                    </p>
+                                                    <img src="/images/flags/<%= el.country%>" alt="flag">
+                                                </div>
+                                                <p>
+                                                    <%= el.description%>
+                                                </p>
+                                                <p class="product-price">
+                                                    $
+                                                    <%= el.price%>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <% } } %>
+                            </div>
                             <div class="see-more">
                                 <a href="#">VER TODO</a>
                             </div>
-                    </section>
+                        </section>
+                        <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+
                 </main>
 
                 <%- include("./partials/footer") %>
-
+                    <script>
+                        $(document).ready(function() {
+                            $('.customer-logos').slick({
+                                slidesToShow: 6,
+                                slidesToScroll: 1,
+                                autoplay: true,
+                                autoplaySpeed: 1500,
+                                arrows: false,
+                                dots: false,
+                                pauseOnHover: false,
+                                responsive: [{
+                                    breakpoint: 768,
+                                    settings: {
+                                        slidesToShow: 4
+                                    }
+                                }, {
+                                    breakpoint: 520,
+                                    settings: {
+                                        slidesToShow: 3
+                                    }
+                                }]
+                            });
+                        });
+                    </script>
 </body>
 
 </html>
