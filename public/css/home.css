@@ -20,7 +20,12 @@
     font-size: 2rem;
     color: lightgray;
     border-bottom: solid gray 1px;
-}
+    animation:anim 5s infinite;}
+    @keyframes anim{
+        from{color:green;}
+        to{color:lightgreen;}}
+  
+
 
 .offers-products {
     display: flex;
