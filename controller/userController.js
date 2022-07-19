@@ -10,7 +10,8 @@ const f_modules = require("../public/js/controllerJS/userFunctions");
 const userController = {
 
     login: (req, res) => {
-        res.render("login");
+        res.cookie('testing','remember',{maxAge:1000*30})
+       return res.render("login");
     },
 
     processLogin: (req, res) => {
