@@ -1,7 +1,9 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const session = require("express-session")
+const session = require("express-session");
+const cookies=require('cookie-parser');
+
 
 const methodOverride = require("method-override");
 
@@ -22,6 +24,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+app.use(cookies());
 
 //routes____________________________________________________
 app.use("/", indexRouter);

@@ -10,8 +10,8 @@ const f_modules = require("../public/js/controllerJS/userFunctions");
 const userController = {
 
     login: (req, res) => {
-        res.cookie('testing','remember',{maxAge:1000*30})
-       return res.render("login");
+       
+       res.render ("login")
     },
 
     processLogin: (req, res) => {
@@ -29,6 +29,9 @@ const userController = {
                 let authPass = (req.body.password === user.password);
                 if (authPass) {     //contraseña correcta
                     req.session.userLogged = user;
+                    if(req.body.remember){
+                        res.cookie('userEmail',req.body.email,{maxAge:(1000*60)*2})
+                    }
                     res.render("/");
                 } else {        //contraseña incorrecta
                     let result = {password : { msg : "Contraseña incorrecta" }};
